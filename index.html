@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== SEO PRIMARY ===== -->
+  <title>IRENE LUXURY – Bijoux de Luxe en Ligne | Or & Diamants</title>
+  <meta name="description"
+    content="Découvrez la collection exclusive Lumière Dorée : bagues, colliers, bracelets et boucles d'oreilles en or 18 carats et diamants certifiés GIA. Livraison gratuite, artisanat français depuis 1985." />
+  <meta name="keywords"
+    content="bijoux luxe, bagues diamants, colliers or, bracelets tennis, boucles oreilles saphir, joaillerie Paris, bijoux en ligne" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Lumière Dorée" />
+  <link rel="canonical" href="https://www.lumiere-doree.fr/" />
+
+  <!-- ===== OPEN GRAPH (Facebook / WhatsApp / LinkedIn) ===== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="LUMIÈRE DORÉE – Bijoux de Luxe en Ligne" />
+  <meta property="og:description"
+    content="Bijoux d'exception façonnés à Paris depuis 1985. Or 18 carats, diamants certifiés GIA. Livraison gratuite en France." />
+  <meta property="og:image" content="assets/hero_jewelry.jpg" />
+  <meta property="og:url" content="https://www.lumiere-doree.fr/" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="Lumière Dorée" />
+
+  <!-- ===== TWITTER CARD ===== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LUMIÈRE DORÉE – Bijoux de Luxe en Ligne" />
+  <meta name="twitter:description"
+    content="Bijoux d'exception façonnés à Paris depuis 1985. Or 18 carats, diamants certifiés GIA." />
+  <meta name="twitter:image" content="assets/hero_jewelry.jpg" />
+
+  <!-- ===== FAVICON ===== -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+
+  <!-- ===== FONTS ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- ===== STYLES ===== -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- ===== JSON-LD STRUCTURED DATA (SEO e-commerce) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "JewelryStore",
+    "name": "Lumière Dorée",
+    "description": "Maison de joaillerie de luxe à Paris depuis 1985. Bagues, colliers, bracelets et boucles d'oreilles en or 18 carats et diamants certifiés GIA.",
+    "url": "https://www.lumiere-doree.fr",
+    "logo": "https://www.lumiere-doree.fr/assets/hero_jewelry.jpg",
+    "telephone": "+33142000000",
+    "email": "contact@lumiere-doree.fr",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "24 Rue de la Paix",
+      "addressLocality": "Paris",
+      "postalCode": "75002",
+      "addressCountry": "FR"
+    },
+    "openingHours": "Mo,Tu,We,Th,Fr,Sa 10:00-19:00",
+    "priceRange": "€€€",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Cash, Credit Card, PayPal",
+    "sameAs": [
+      "https://www.instagram.com/lumiere_doree",
+      "https://www.facebook.com/lumieredoree"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- ===== LOADER ===== -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">✦ IRENE LUXURY ✦</div>
+      <div class="loader-bar">
+        <div class="loader-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CART SIDEBAR ===== -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+  <aside id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+      <h2>Mon Panier</h2>
+      <button id="close-cart-btn" class="close-btn" aria-label="Fermer le panier">✕</button>
+    </div>
+    <div id="cart-items" class="cart-items">
+      <div class="cart-empty">
+        <div class="cart-empty-icon">◇</div>
+        <p>Votre panier est vide</p>
+        <span>Découvrez nos collections</span>
+      </div>
+    </div>
+    <div id="cart-footer" class="cart-footer" style="display:none;">
+      <div class="cart-subtotal">
+        <span>Sous-total</span>
+        <span id="cart-total-price">0 €</span>
+      </div>
+      <p class="cart-shipping">Livraison gratuite à partir de 200 €</p>
+      <button class="btn-checkout" id="checkout-btn">Commander →</button>
+    </div>
+  </aside>
+
+  <!-- ===== NOTIFICATION TOAST ===== -->
+  <div id="toast" class="toast">
+    <span class="toast-icon">✦</span>
+    <span id="toast-msg">Ajouté au panier</span>
+  </div>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header id="main-header" class="header">
+    <div class="header-inner">
+      <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="#" class="logo" aria-label="Lumière Dorée Accueil">
+        <span class="logo-symbol">✦</span>
+        <span class="logo-text">IRENE LUXURY </span>
+        <span class="logo-symbol">✦</span>
+      </a>
+      <nav class="nav-desktop" aria-label="Navigation principale">
+        <a href="#hero" class="nav-link">Accueil</a>
+        <a href="#collections" class="nav-link">Collections</a>
+        <a href="#products" class="nav-link">Boutique</a>
+        <a href="#about" class="nav-link">Notre Histoire</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" aria-label="Rechercher" id="search-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8" />
+            <path d="M21 21l-4.35-4.35" />
+          </svg>
+        </button>
+        <button class="icon-btn cart-btn" id="cart-btn" aria-label="Panier">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 01-8 0" />
+          </svg>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile nav -->
+    <nav class="nav-mobile" id="mobile-nav" aria-label="Navigation mobile">
+      <a href="#hero" class="nav-link">Accueil</a>
+      <a href="#collections" class="nav-link">Collections</a>
+      <a href="#products" class="nav-link">Boutique</a>
+      <a href="#about" class="nav-link">Notre Histoire</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="hero">
+    <div class="hero-bg">
+      <img src="assets/hero_jewelry.jpg" alt="Collection de bijoux Lumière Dorée" class="hero-img" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-particles" id="hero-particles"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal-up">Collection Haute Joaillerie 2026</p>
+      <h1 class="hero-title reveal-up">
+        L'Art du<br />
+        <em>Précieux</em>
+      </h1>
+      <p class="hero-subtitle reveal-up">Bijoux d'exception façonnés par des artisans maîtres.<br />Chaque pièce, une
+        histoire unique.</p>
+      <div class="hero-cta reveal-up">
+        <a href="#products" class="btn-primary">Découvrir la Collection</a>
+        <a href="#about" class="btn-ghost">Notre Savoir-Faire</a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Défiler</span>
+    </div>
+  </section>
+
+  <!-- ===== MARQUEE ===== -->
+  <div class="marquee-wrapper" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Or 18 Carats</span><span class="dot">✦</span>
+      <span>Diamants Certifiés GIA</span><span class="dot">✦</span>
+      <span>Livraison Offerte</span><span class="dot">✦</span>
+      <span>Artisanat Français</span><span class="dot">✦</span>
+      <span>Garantie à Vie</span><span class="dot">✦</span>
+      <span>Emballage Prestige</span><span class="dot">✦</span>
+      <span>Or 18 Carats</span><span class="dot">✦</span>
+      <span>Diamants Certifiés GIA</span><span class="dot">✦</span>
+      <span>Livraison Offerte</span><span class="dot">✦</span>
+      <span>Artisanat Français</span><span class="dot">✦</span>
+      <span>Garantie à Vie</span><span class="dot">✦</span>
+      <span>Emballage Prestige</span><span class="dot">✦</span>
+    </div>
+  </div>
+
+  <!-- ===== COLLECTIONS ===== -->
+  <section id="collections" class="collections section-pad">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <p class="section-eyebrow">Nos Univers</p>
+        <h2 class="section-title">Collections Exclusives</h2>
+        <div class="section-divider"><span>✦</span></div>
+      </div>
+      <div class="collections-grid">
+        <div class="collection-card reveal-up" data-filter="bagues">
+          <div class="collection-card-img">
+            <img src="assets/ring_product.jpg" alt="Collection Bagues" loading="lazy" />
+            <div class="collection-card-overlay"></div>
+          </div>
+          <div class="collection-card-body">
+            <h3>Bagues</h3>
+            <p>Solitaires & Alliances</p>
+            <button class="btn-card-link" data-filter-target="bagues">Explorer →</button>
+          </div>
+        </div>
+        <div class="collection-card reveal-up" data-filter="colliers">
+          <div class="collection-card-img">
+            <img src="assets/necklace_product.jpg" alt="Collection Colliers" loading="lazy" />
+            <div class="collection-card-overlay"></div>
+          </div>
+          <div class="collection-card-body">
+            <h3>Colliers</h3>
+            <p>Pendentifs & Chaînes</p>
+            <button class="btn-card-link" data-filter-target="colliers">Explorer →</button>
+          </div>
+        </div>
+        <div class="collection-card reveal-up" data-filter="bracelets">
+          <div class="collection-card-img">
+            <img src="assets/bracelet_product.jpg" alt="Collection Bracelets" loading="lazy" />
+            <div class="collection-card-overlay"></div>
+          </div>
+          <div class="collection-card-body">
+            <h3>Bracelets</h3>
+            <p>Tennis & Joncs</p>
+            <button class="btn-card-link" data-filter-target="bracelets">Explorer →</button>
+          </div>
+        </div>
+        <div class="collection-card reveal-up" data-filter="boucles">
+          <div class="collection-card-img">
+            <img src="assets/earrings_product.jpg" alt="Collection Boucles d'oreilles" loading="lazy" />
+            <div class="collection-card-overlay"></div>
+          </div>
+          <div class="collection-card-body">
+            <h3>Boucles d'Oreilles</h3>
+            <p>Pendantes & Puces</p>
+            <button class="btn-card-link" data-filter-target="boucles">Explorer →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCTS ===== -->
+  <section id="products" class="products section-pad">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <p class="section-eyebrow">Notre Sélection</p>
+        <h2 class="section-title">Pièces d'Exception</h2>
+        <div class="section-divider"><span>✦</span></div>
+      </div>
+      <!-- Filters -->
+      <div class="filter-bar reveal-up">
+        <button class="filter-btn active" data-filter="all" id="filter-all">Tous</button>
+        <button class="filter-btn" data-filter="bagues" id="filter-bagues">Bagues</button>
+        <button class="filter-btn" data-filter="colliers" id="filter-colliers">Colliers</button>
+        <button class="filter-btn" data-filter="bracelets" id="filter-bracelets">Bracelets</button>
+        <button class="filter-btn" data-filter="boucles" id="filter-boucles">Boucles d'Oreilles</button>
+      </div>
+      <!-- Products grid -->
+      <div class="products-grid" id="products-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BANNER ===== -->
+  <section class="banner-section">
+    <img src="assets/collection_banner.jpg" alt="Collection complète Lumière Dorée" class="banner-img" loading="lazy" />
+    <div class="banner-overlay"></div>
+    <div class="banner-content reveal-up">
+      <p class="banner-eyebrow">Offre Exclusive</p>
+      <h2>Livraison Offerte<br />dès 200 € d'achat</h2>
+      <p>Emballage cadeau prestige inclus • Retours gratuits 30 jours</p>
+      <a href="#products" class="btn-primary">Profiter de l'Offre</a>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="about section-pad">
+    <div class="container about-grid">
+      <div class="about-text reveal-up">
+        <p class="section-eyebrow">Notre Histoire</p>
+        <h2 class="section-title">L'Excellence à la Française</h2>
+        <div class="section-divider" style="justify-content:flex-start;"><span>✦</span></div>
+        <p>Fondée en 1985 au cœur de Paris, <strong>IRENE LUXURY</strong> est une maison de joaillerie de prestige qui
+          perpétue l'art du bijou d'exception à la française.</p>
+        <p>Chaque création naît de la rencontre entre un savoir-faire artisanal ancestral et une vision contemporaine du
+          luxe. Nos artisans maîtres sélectionnent avec soin les pierres les plus rares – diamants certifiés GIA,
+          saphirs de Ceylan, émeraudes de Colombie – pour façonner des bijoux qui traversent le temps.</p>
+        <div class="about-stats">
+          <div class="stat reveal-up">
+            <span class="stat-num">40+</span>
+            <span class="stat-label">Années d'excellence</span>
+          </div>
+          <div class="stat reveal-up">
+            <span class="stat-num">12K+</span>
+            <span class="stat-label">Clients satisfaits</span>
+          </div>
+          <div class="stat reveal-up">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Pierres certifiées</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal-up">
+        <div class="about-img-frame">
+          <img src="assets/collection_banner.jpg" alt="Atelier Lumière Dorée" loading="lazy" />
+          <div class="about-badge">
+            <span class="badge-icon">✦</span>
+            <span>Artisanat<br />Français</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials section-pad">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <p class="section-eyebrow">Avis Clients</p>
+        <h2 class="section-title">Ils Nous Font Confiance</h2>
+        <div class="section-divider"><span>✦</span></div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal-up">
+          <div class="stars">★★★★★</div>
+          <p>"Une bague de fiançailles absolument sublime. Ma fiancée a fondu en larmes quand elle a ouvert l'écrin. Le
+            service était irréprochable du début à la fin."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">ML</div>
+            <div>
+              <strong>MBA L.</strong>
+              <span>Lyon, France/span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal-up">
+          <div class="stars">★★★★★</div>
+          <p>"Le bracelet tennis que j'ai offert à ma mère pour ses 60 ans. Elle ne l'enlève plus. La qualité des
+            diamants est exceptionnelle, la finition parfaite."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SC</div>
+            <div>
+              <strong>KENGNE L.</strong>
+              <span>Yaounde, Cameroun </span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal-up">
+          <div class="stars">★★★★★</div>
+          <p>"Service client exceptionnel, livraison ultra rapide et emballage digne des plus grandes maisons. Mon
+            collier de perles est une merveille. Je recommande !"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">NB</div>
+            <div>
+              <strong>Nathalie B.</strong>
+              <span>Bordeaux, France</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="newsletter section-pad">
+    <div class="container">
+      <div class="newsletter-inner reveal-up">
+        <p class="section-eyebrow">Rejoignez-nous</p>
+        <h2>Accédez aux Ventes Privées</h2>
+        <p>Inscrivez-vous et recevez en exclusivité nos nouvelles créations, offres VIP et invitations à nos événements
+          privés.</p>
+        <form class="newsletter-form" id="newsletter-form" novalidate>
+          <input type="email" id="newsletter-email" placeholder="Votre adresse e-mail"
+            aria-label="Adresse e-mail pour la newsletter" />
+          <button type="submit" class="btn-primary" id="newsletter-submit">S'inscrire</button>
+        </form>
+        <p class="newsletter-disclaimer">En vous inscrivant, vous acceptez notre politique de confidentialité.
+          Désinscription possible à tout moment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="contact section-pad">
+    <div class="container contact-grid">
+      <div class="contact-info reveal-up">
+        <p class="section-eyebrow">Nous Contacter</p>
+        <h2 class="section-title">À Votre Service</h2>
+        <div class="section-divider" style="justify-content:flex-start;"><span>✦</span></div>
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div>
+            <strong>E-mail</strong>
+            <p>contact@lumiere-doree.fr</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✆</div>
+          <div>
+            <strong>Téléphone</strong>
+            <p>+352 621 729 733</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">◈</div>
+          <div>
+            <strong>Showroom Paris</strong>
+            <p>24 Rue de la Paix, 75002 Paris<br />Lun – Sam : 10h – 19h</p>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form reveal-up" id="contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-name">Prénom & Nom</label>
+            <input type="text" id="contact-name" placeholder="Marie Dupont" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-email">E-mail</label>
+            <input type="email" id="contact-email" placeholder="marie@exemple.fr" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="contact-subject">Sujet</label>
+          <select id="contact-subject">
+            <option value="">Sélectionner un sujet</option>
+            <option>Commande & Livraison</option>
+            <option>Personnalisation</option>
+            <option>Retour & Échange</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" rows="4" placeholder="Votre message..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" id="contact-submit">Envoyer le Message →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <span class="logo-symbol">✦</span>
+            <span class="logo-text">IRENE LUXURY</span>
+            <span class="logo-symbol">✦</span>
+          </div>
+          <p>Bijoux d'exception façonnés à Paris depuis 1985. L'art du précieux au service de vos émotions les plus
+            belles.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Pinterest">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.77 1.22-5.17 1.22-5.17s-.31-.62-.31-1.55c0-1.45.84-2.54 1.88-2.54.89 0 1.32.67 1.32 1.47 0 .9-.57 2.24-.87 3.49-.25 1.04.52 1.88 1.54 1.88 1.84 0 3.08-2.37 3.08-5.17 0-2.13-1.44-3.62-3.5-3.62-2.38 0-3.78 1.79-3.78 3.63 0 .72.28 1.49.62 1.91.07.08.08.15.06.23-.06.26-.2.84-.23.96-.03.15-.11.18-.25.11-1.13-.52-1.83-2.16-1.83-3.48 0-2.83 2.06-5.43 5.94-5.43 3.12 0 5.55 2.22 5.55 5.19 0 3.1-1.95 5.59-4.65 5.59-.91 0-1.76-.47-2.05-1.03l-.56 2.08c-.2.78-.75 1.75-1.12 2.34.84.26 1.73.4 2.65.4 5.52 0 10-4.48 10-10S17.52 2 12 2z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Boutique</h4>
+          <ul>
+            <li><a href="#products">Toutes les Pièces</a></li>
+            <li><a href="#collections">Bagues</a></li>
+            <li><a href="#collections">Colliers</a></li>
+            <li><a href="#collections">Bracelets</a></li>
+            <li><a href="#collections">Boucles d'Oreilles</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Personnalisation</a></li>
+            <li><a href="#">Entretien & Polissage</a></li>
+            <li><a href="#">Certificats d'Authenticité</a></li>
+            <li><a href="#">Livraison & Retours</a></li>
+            <li><a href="#">Garanties</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Maison</h4>
+          <ul>
+            <li><a href="#about">Notre Histoire</a></li>
+            <li><a href="#">Nos Artisans</a></li>
+            <li><a href="#">Presse</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#">Mentions Légales</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Lumière Dorée. Tous droits réservés. Bijoux d'exception, façonnés avec amour à Paris.</p>
+        <div class="payment-icons" aria-label="Moyens de paiement acceptés">
+          <span>Visa</span>
+          <span>Mastercard</span>
+          <span>PayPal</span>
+          <span>Apple Pay</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== PRODUCT MODAL ===== -->
+  <div id="product-modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Détail produit">
+    <div class="product-modal" id="product-modal">
+      <button class="modal-close" id="modal-close-btn" aria-label="Fermer">✕</button>
+      <div class="modal-inner" id="modal-inner">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Only app.js is used — script.js and styles.css are legacy files not loaded -->
+  <script src="app.js" defer></script>
+</body>
+
+</html>
